@@ -42,6 +42,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>shopme-java-backend</finalName>
 	</build>
 
 </project>
