@@ -19,5 +19,12 @@ pipeline {
                 bat 'mvn -B test'
             }
         }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t navidansari/shopme-java-backend .'
+                }
+            }
+        }
     }
 }
