@@ -27,7 +27,15 @@ pipeline {
                  }
              }
          }
-
+         stage('Push Image to Dockerhub'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
+                        bat 'docker login -u navidansari -p ${dockerhubpwd}'
+                    }
+                }
+            }
+         }
 
     }
 
