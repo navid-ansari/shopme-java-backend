@@ -33,6 +33,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
                         bat 'docker login -u navidansari -p ${dockerhubpwd}'
                     }
+                    bat 'docker push navidansari/shopme-java-backend'
                 }
             }
          }
