@@ -19,17 +19,17 @@ pipeline {
                 bat 'mvn -B test'
             }
         }
-        stage('Build docker image'){
+        stage('Build Docker Image'){
             steps{
                 script{
                     bat 'docker build -t navidansari/shopme-java-backend .'
                 }
             }
         }
-        stage('Push image to Dockerhub'){
+        stage('Push Image to Dockerhub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   withCredentials(([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
                         bat 'docker login -u navidansari -p ${dockerhubpwd}'
                    }
                    bat 'docker push navidansari/shopme-java-backend'
