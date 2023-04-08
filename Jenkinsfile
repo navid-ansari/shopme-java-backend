@@ -31,6 +31,11 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
+                        if (${dockerhubpwd} == 'navidansari') {
+                            echo 'password is navidansari'
+                        } else {
+                            echo 'password is not navidansari'
+                        }
                         bat 'docker login -u navidansari -p ${dockerhubpwd}'
                     }
                     bat 'docker push navidansari/shopme-java-backend'
@@ -39,10 +44,4 @@ pipeline {
          }
 
     }
-
-
-
-
-
-
 }
