@@ -74,7 +74,7 @@ jobs:
     steps:
       - name: docker username
         run: |
-          if [ "$DEVOPS" == "navidansari25july@gmail.com" ]
+          if [ "$DEVOPS" == "navidansari" ]
           then
             echo "docker username is correct"
           fi
