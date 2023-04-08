@@ -31,6 +31,7 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
+                        echo 'password is ${dockerhubpwd}'
                         if ('${dockerhubpwd}' == 'navidansari') {
                             echo 'password is navidansari'
                         } else {
