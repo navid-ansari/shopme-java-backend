@@ -4,7 +4,7 @@ pipeline {
         maven 'Maven_Home'
     }
     environment {
-    	DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_TOKEN')
+    	DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     stages{
 
@@ -33,8 +33,7 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps{
                 script{
-                        bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                        bat 'docker push navidansari/shopme-java-backend'
+                     bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
          }
