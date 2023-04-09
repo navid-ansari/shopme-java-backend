@@ -34,7 +34,7 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
-                        bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
+                        bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     }
                     bat 'docker push navidansari/shopme-java-backend'
                 }
