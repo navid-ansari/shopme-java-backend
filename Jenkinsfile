@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'Maven_Home'
     }
+    environment {
+    	DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_TOKEN')
+    }
     stages{
 
          stage('Checkout'){
@@ -31,18 +34,11 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'navidansari', variable: 'dockerhubpwd')]) {
-                        echo 'password is ${dockerhubpwd}'
-                        if ('${dockerhubpwd}' == 'navidansari') {
-                            echo 'password is navidansari'
-                        } else {
-                            echo 'password is not navidansari'
-                        }
-                        bat 'docker login -u navidansari -p ${dockerhubpwd}'
+                        bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
                     }
                     bat 'docker push navidansari/shopme-java-backend'
                 }
             }
          }
-
     }
 }
