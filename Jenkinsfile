@@ -34,6 +34,7 @@ pipeline {
                 script{
                     bat 'docker login -u navidansari -p navidansari'
                     bat 'docker push navidansari/shopme-java-backend'
+                    bat 'docker logout'
                 }
             }
          }
