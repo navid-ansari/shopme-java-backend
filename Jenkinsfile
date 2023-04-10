@@ -32,7 +32,7 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps{
                 script{
-                    bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    bat 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                     bat 'docker push navidansari/shopme-java-backend'
                     bat 'docker logout'
                 }
