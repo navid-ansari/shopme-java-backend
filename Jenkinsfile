@@ -32,7 +32,7 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps{
                 script{
-                    bat 'echo navidansari | docker login -u navidansari --password-stdin'
+                    bat 'echo dckr_pat_pIiRDHkkYL0xhoCXIbmcl2GC17c | docker login -u navidansari --password-stdin'
                 }
             }
          }
