@@ -36,7 +36,7 @@ pipeline {
                     if ('$DOCKERHUB_CREDENTIALS_PSW' == 'dckr_pat_pIiRDHkkYL0xhoCXIbmcl2GC17c') {
                         echo 'Token matched'
                     } else {
-                        echo 'Token not matched'
+                        echo 'Username is $DOCKERHUB_CREDENTIALS_USR'
                     }
                      bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
