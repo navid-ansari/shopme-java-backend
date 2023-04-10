@@ -32,9 +32,8 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps{
                 script{
-                    bat 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}'
-                    bat 'docker push navidansari/shopme-java-backend'
-                    bat 'docker logout'
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                        echo uname=$USERNAME pwd=$PASSWORD
                 }
             }
          }
