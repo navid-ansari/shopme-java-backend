@@ -7,7 +7,6 @@ pipeline {
     	DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     stages{
-
          stage('Checkout'){
              steps{
                  checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/navid-ansari/shopme-java-backend']]])
@@ -33,11 +32,6 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps{
                 script{
-                    if ('$DOCKERHUB_CREDENTIALS_PSW' == 'dckr_pat_pIiRDHkkYL0xhoCXIbmcl2GC17c') {
-                        echo 'Token matched'
-                    } else {
-                        echo $DOCKERHUB_CREDENTIALS_USR
-                    }
                     bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
