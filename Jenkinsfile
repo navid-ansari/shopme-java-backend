@@ -31,7 +31,7 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps{
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'jenkins-docker-ssh', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                     echo uname=$USERNAME pwd=$PASSWORD
                 }
             }
