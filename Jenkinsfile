@@ -30,9 +30,9 @@ pipeline {
              }
          }
          stage('Push Image to Dockerhub'){
-            steps{
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-                    echo uname=$USERNAME
+            steps {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        echo uname=$USERNAME
                 }
             }
          }
