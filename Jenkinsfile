@@ -31,7 +31,9 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-                bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                withCredentials([usernamePassword(credentialsId: 'dockerhubnew', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    bat 'docker login -u $USERNAME -p $PASSWORD$'
+                }
             }
          }
     }
