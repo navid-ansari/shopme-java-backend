@@ -37,7 +37,7 @@ pipeline {
                 }
                 withCredentials([string(credentialsId: 'DOCKER_USERNAME', variable: 'DOCKER_USERNAME'), string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD')]) {
                     echo DOCKER_USERNAME
-                    echo DOCKER_USERNAME
+                    echo DOCKER_PASSWORD
                 }
             }
          }
