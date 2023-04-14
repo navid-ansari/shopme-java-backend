@@ -33,6 +33,7 @@ pipeline {
             steps {
                     withCredentials([usernamePassword(credentialsId: 'dockerhubnew', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         echo USERNAME
+                        echo PASSWORD
                         bat 'docker login -u ${USERNAME} -p ${PASSWORD}'
                         bat 'docker push navidansari/shopme-java-backend'
                         bat 'docker logout'
