@@ -31,10 +31,10 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        bat """
-                        echo uname=$USERNAME pwd=$PASSWORD
-                        """
+                    withCredentials([usernamePassword(credentialsId: 'dockerhubnew', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        bat 'docker login -u ${USERNAME} -p ${PASSWORD}'
+                        bat 'docker push navidansari/shopme-java-backend'
+                        bat 'docker logout'
                 }
             }
          }
