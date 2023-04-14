@@ -32,7 +32,7 @@ pipeline {
          stage('Push Image to Dockerhub'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhubnew', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    bat 'docker login -u $USERNAME -p $PASSWORD$'
+                    bat 'docker login -u $USERNAME -p $PASSWORD'
                 }
             }
          }
