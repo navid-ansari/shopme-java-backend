@@ -4,7 +4,7 @@ pipeline {
         maven 'Maven_Home'
     }
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhubnew')
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     stages{
          stage('Checkout'){
