@@ -40,7 +40,7 @@ pipeline {
                     echo DOCKER_USERNAME
                     echo DOCKER_PASSWORD
                     bat '''
-                        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+                        docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD"
                     '''
                 }
                 bat 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p navidansari1'
