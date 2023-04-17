@@ -4,7 +4,8 @@ pipeline {
         maven 'Maven_Home'
     }
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    //    DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+        DOCKERHUB_CREDENTIALS=credentials('dockerhubnew')
     }
     stages{
          stage('Checkout'){
@@ -31,15 +32,7 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    echo USERNAME
-    //                      echo $USERNAME
-                    echo '$USERNAME'
-    //                 echo "$USERNAME"
-                    echo '$DOCKERHUB_CREDENTIALS_USR'
-    //                      echo "$DOCKERHUB_CREDENTIALS_USR"
-                    bat 'docker login -u $USERNAME -p $PASSWORD'
-                }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
          }
     }
