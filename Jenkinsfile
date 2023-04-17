@@ -39,7 +39,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'DOCKER_USERNAME', variable: 'DOCKER_USERNAME'), string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD')]) {
                     echo DOCKER_USERNAME
                     echo DOCKER_PASSWORD
-                    bat 'docker login -u "DOCKER_USERNAME" -p "DOCKER_PASSWORD"'
+                    bat 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                 }
             }
          }
