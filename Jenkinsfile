@@ -31,22 +31,9 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    echo USERNAME
-                    echo PASSWORD
-                    bat 'docker login -u navidansari -p navidansari1'
-                }
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://hub.docker.com/') {
                     bat 'docker login'
                 }
-                withCredentials([string(credentialsId: 'DOCKER_USERNAME', variable: 'DOCKER_USERNAME'), string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD')]) {
-                    echo DOCKER_USERNAME
-                    echo DOCKER_PASSWORD
-                    bat '''
-                        docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD"
-                    '''
-                }
-                bat 'docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p navidansari1'
             }
          }
     }
