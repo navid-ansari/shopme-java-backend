@@ -38,7 +38,7 @@ pipeline {
     //                 echo "$USERNAME"
                     echo '$DOCKERHUB_CREDENTIALS_USR'
     //                      echo "$DOCKERHUB_CREDENTIALS_USR"
-                    bat 'docker login -u "$USERNAME" -p "$PASSWORD"'
+                    bat 'docker login -u $USERNAME -p $PASSWORD'
                 }
             }
          }
