@@ -4,8 +4,7 @@ pipeline {
         maven 'Maven_Home'
     }
     environment {
-    //    DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-        DOCKERHUB_CREDENTIALS=credentials('dockerhubnew')
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     stages{
          stage('Checkout'){
@@ -32,7 +31,6 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-            echo DOCKERHUB_CREDENTIALS_USR
                 bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
                 bat 'docker push navidansari/shopme-java-backend'
                 bat 'docker logout'
