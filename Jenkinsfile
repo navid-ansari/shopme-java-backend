@@ -32,7 +32,7 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-            echo '$DOCKERHUB_CREDENTIALS_USR'
+            echo $DOCKERHUB_CREDENTIALS_USR
                 bat 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
             }
          }
