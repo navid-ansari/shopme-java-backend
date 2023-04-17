@@ -34,7 +34,8 @@ pipeline {
             steps {
             echo DOCKERHUB_CREDENTIALS_USR
                 bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
-                bat 'echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
+                bat 'docker push navidansari/shopme-java-backend'
+                bat 'docker logout'
             }
          }
     }
