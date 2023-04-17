@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     echo USERNAME
-                    echo $USERNAME
+    //                      echo $USERNAME
                     echo '$USERNAME'
                     echo "$USERNAME"
                     echo '$DOCKERHUB_CREDENTIALS_USR'
