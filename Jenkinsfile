@@ -35,15 +35,10 @@ pipeline {
                     echo USERNAME
     //                      echo $USERNAME
                     echo '$USERNAME'
-                    echo "$USERNAME"
+    //                 echo "$USERNAME"
                     echo '$DOCKERHUB_CREDENTIALS_USR'
-                    echo "$DOCKERHUB_CREDENTIALS_USR"
-                    bat 'docker login -u $USERNAME -p $PASSWORD'
-                }
-                withCredentials([string(credentialsId: 'DOCKER_USERNAME', variable: 'DOCKER_USERNAME'), string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD')]) {
-                    echo DOCKER_USERNAME
-                    echo DOCKER_PASSWORD
-                    bat 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+    //                      echo "$DOCKERHUB_CREDENTIALS_USR"
+                    bat 'docker login -u "$USERNAME" -p "$PASSWORD"'
                 }
             }
          }
