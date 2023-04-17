@@ -32,11 +32,8 @@ pipeline {
          }
          stage('Push Image to Dockerhub'){
             steps {
-//             echo DOCKERHUB_CREDENTIALS_USR
-//                bat "docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}"
-                withDockerRegistry(credentialsId: 'dockerhubnew', url: 'https://hub.docker.com') {
-                   bat "docker login"
-                }
+            echo DOCKERHUB_CREDENTIALS_USR
+                bat 'docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%'
             }
          }
     }
